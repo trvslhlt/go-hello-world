@@ -1,10 +1,11 @@
-FROM golang:1.12.0-alpine3.9
-
+FROM golang:latest
 RUN mkdir /app
 
 ADD . /app
 
 WORKDIR /app
+
+RUN go get -d github.com/gorilla/mux
 
 RUN go build -o main .
 
