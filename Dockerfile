@@ -1,12 +1,11 @@
 FROM golang:latest
-RUN mkdir /app
-
-ADD . /app
 
 WORKDIR /app
 
-RUN go get -d github.com/gorilla/mux
+COPY ./ /app
 
-RUN go build -o main .
+RUN go mod download
 
-CMD ["/app/main"]
+RUN go get github.com/githubnemo/CompileDaemon
+
+ENTRYPOINT CompileDaemon --build="go build main.go" --command=./main

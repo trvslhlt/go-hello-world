@@ -2,21 +2,20 @@ package main
 
 import (
 	"fmt"
-	"html"
-	"log"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 func main() {
 
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
+	r := mux.NewRouter()
+
+	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Welcome to the API. hot reload")
 	})
 
-	http.HandleFunc("/hi", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprint(w, "Hi")
-	})
-
-	log.Fatal(http.ListenAndServe(":8081", nil))
+	fmt.Println("Server listening")
+	http.ListenAndServe(":80", r)
 
 }
