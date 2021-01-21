@@ -3,7 +3,8 @@
 ## getting started
 
 1. clone the repo
-2. `cd go-hello-word`
-3. `docker build -t go-hello-world .`
-4. `docker run -p 8080:8081 -it go-hello-world`
-5. In a browser, navigate to http://localhost:8080/
+1. `cd go-hello-word`
+1. start Docker
+1. `docker build -t go-hello-world .`
+1. `docker run -p 80:8081 -it go-hello-world`
+1. In a browser, navigate to http://localhost
